@@ -216,10 +216,36 @@
     map.on('load', () => {
       const features = geojson.features;
 
-      // Simple approach: just add markers for each feature
-      features.forEach((feature) => {
+      // Function to add small offset for markers at exact same location
+      function getOffsetCoords(coords, index, features) {
+        // Find all markers at this exact location
+        const sameLocation = features.filter(f =>
+          f.geometry.coordinates[0] === coords[0] &&
+          f.geometry.coordinates[1] === coords[1]
+        );
+
+        // If only one marker, no offset needed
+        if (sameLocation.length <= 1) {
+          return coords;
+        }
+
+        // Find the index within this group
+        const groupIndex = sameLocation.findIndex(f => f === features[index]);
+
+        // Spread markers in a small circle
+        const angle = (groupIndex / sameLocation.length) * Math.PI * 2;
+        const radius = 0.003; // ~300m offset for visibility
+
+        return [
+          coords[0] + Math.cos(angle) * radius,
+          coords[1] + Math.sin(angle) * radius
+        ];
+      }
+
+      // Add markers for each feature
+      features.forEach((feature, index) => {
         const props = feature.properties;
-        const coords = feature.geometry.coordinates;
+        const coords = getOffsetCoords(feature.geometry.coordinates, index, features);
 
         const popupHTML = `
           <div class="popup">
