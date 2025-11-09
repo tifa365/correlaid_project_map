@@ -333,13 +333,12 @@
         markersOnScreen = newMarkers;
       }
 
-      // Update markers on map move
-      map.on('data', (e) => {
-        if (e.sourceId !== 'projects' || !e.isSourceLoaded) return;
-        map.on('move', updateMarkers);
-        map.on('moveend', updateMarkers);
-        updateMarkers();
-      });
+      // Update markers on map render and move
+      map.on('render', updateMarkers);
+      map.on('moveend', updateMarkers);
+
+      // Initial render
+      updateMarkers();
     });
 
     // --- 4) VIEW TOGGLE FUNCTIONALITY ---------------------------------------
