@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CorrelAid — Project Locations</title>
+
+  <!-- Lato Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+  <!-- MapLibre GL -->
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.css">
+  <script src="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.js"></script>
+
+  <style>
+    /* Page + map layout */
+    html, body { height: 100%; margin: 0; font-family: 'Lato', sans-serif; }
+    #map { height: 100dvh; width: 100%; position: relative; }
+
+    /* Logo overlay - round and clickable */
+    .logo-link {
+      position: absolute; z-index: 10; top: 16px; left: 16px;
+      display: block; border-radius: 50%;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 4px solid #fff;
+      overflow: hidden;
+      width: 90px; height: 90px;
+    }
+    .logo-link:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 4px 12px rgba(0,0,0,0.25);
+    }
+    .logo-link:focus {
+      outline: 3px solid #2563eb;
+      outline-offset: 2px;
+    }
+    .logo-link img {
+      width: 100%; height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Minimalist arrow toggle */
+    .view-toggle-btn {
+      position: absolute; z-index: 10;
+      bottom: 20px; left: 50%;
+      transform: translateX(-50%);
+      width: 40px; height: 40px;
+      background-color: rgba(255, 255, 255, 0.95);
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .view-toggle-btn:hover {
+      background-color: #ffffff;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      transform: translateX(-50%) scale(1.1);
+    }
+    .view-toggle-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: #9B2873;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.3s ease;
+    }
+    .view-toggle-btn.flipped svg {
+      transform: rotate(180deg);
+    }
+
+    /* Style default MapLibre markers */
+    .maplibregl-marker svg {
+      fill: #9B2873; /* CorrelAid pink */
+    }
+    .maplibregl-marker {
+      cursor: pointer;
+    }
+
+    /* Popup content - CorrelAid style */
+    .maplibregl-popup-content {
+      padding: 16px;
+      border-radius: 1.5rem;
+      border: 1px solid #eaecf0;
+      box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+      background-color: #ffffff !important;
+      min-width: 260px;
+      max-width: 300px;
+    }
+    .maplibregl-popup-tip {
+      border-top-color: #ffffff !important;
+    }
+    .popup {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .popup h3 {
+      margin: 0;
+      font-family: 'Lato', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.3;
+      color: #333333;
+    }
+    .popup .project-title {
+      margin: 0;
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #475467;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .popup .address {
+      margin: 0;
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 1.4;
+      color: #667085;
+    }
+    .popup a {
+      display: inline-block;
+      padding: 6px 12px;
+      background-color: #2f6fbc;
+      color: #ffffff !important;
+      text-decoration: none;
+      font-family: 'Lato', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      border-radius: 0.5rem;
+      transition: background-color 0.2s ease;
+      text-align: center;
+      margin-top: 4px;
+      align-self: flex-start;
+    }
+    .popup a:hover {
+      background-color: #25599a;
+      text-decoration: none;
+    }
+
+    /* Close button - Square Icon Button style */
+    .maplibregl-popup-close-button {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      background-color: #f5f5f5;
+      border: 0;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      font-size: 18px;
+      color: #666;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .maplibregl-popup-close-button:hover {
+      background-color: #e8e8e8;
+      color: #000;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div id="map">
+    <a href="https://correlaid.org/" target="_blank" rel="noopener" class="logo-link" aria-label="CorrelAid Homepage">
+      <img src="logo.webp" alt="CorrelAid logo">
+    </a>
+    <button id="viewToggle" class="view-toggle-btn" aria-label="View all locations">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M19 9l-7 7-7-7" />
+      </svg>
+    </button>
+  </div>
+
+  <script>
+    // --- 1) CONFIG ----------------------------------------------------------
+    const MAPTILER_KEY = "Wvx3V0UWierZFHgmfpVL";
+    const STYLE_URL = `https://api.maptiler.com/maps/dataviz/style.json?key=${MAPTILER_KEY}`;
+
+    // --- 2) MAP INIT --------------------------------------------------------
+    const map = new maplibregl.Map({
+      container: 'map',
+      style: STYLE_URL,
+      center: [10.5, 51.2],   // Center on Germany
+      zoom: 4
+    });
+
+    map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'top-right');
+    map.addControl(new maplibregl.FullscreenControl(), 'top-right');
+    map.addControl(new maplibregl.ScaleControl({ maxWidth: 120, unit: 'metric' }));
+
+    // --- 3) LOAD LOCATIONS AND ADD MARKERS ---------------------------------
+    // GeoJSON data embedded directly to avoid CORS issues with file:// protocol
+    const geojson = {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[13.4151637,52.5259212]},"properties":{"name":"European Community Foundation Initiative","project":"Database management system for European Community Foundations Initiative (ECFI)","lon":13.4151637,"lat":52.5259212,"address":"Karl-Liebknecht-Straße 34, 10178 Berlin, Germany","place":"Berlin","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2025-10-ECF"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[13.4151637,52.5259212]},"properties":{"name":"Silbernetz e.V.","project":"Improving and upgrading the Silbernetz dashboard","lon":13.4151637,"lat":52.5259212,"address":"Wollankstraße 97, 13359 Berlin, Germany","place":"Berlin","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2025-05-SIL"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[10.0460532,53.5915891]},"properties":{"name":"Phase BE","project":" Fortschritts-Monitor","lon":10.0460532,"lat":53.5915891,"address":"Hellbrookstraße 63, 22305 Hamburg, Germany","place":"Hamburg","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2025-05-PBE"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[9.1723689,47.6628479]},"properties":{"name":"Smart Green City Konstanz","project":"Data Story mit Konstanzer Klima- und Wetterdaten","lon":9.1723689,"lat":47.6628479,"address":"Untere Laube 24, 78462 Konstanz, Germany","place":"Konstanz","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2025-01-SGC"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[16.3314064,48.1863764]},"properties":{"name":"Sindbad","project":"Automatisiertes Qualitätsmanagement für ein Mentoringprogramm","lon":16.3314064,"lat":48.1863764,"address":"Sparkassaplatz 3, 1150 Wien, Austria","place":"Wien","country":"Austria","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2024-12-SIN"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[13.4151637,52.5259212]},"properties":{"name":"Civic Data Lab","project":"Auswertung einer Umfrage zu KI im Ehrenamt","lon":13.4151637,"lat":52.5259212,"address":"Glinkastraße 24, 10117 Berlin, Germany","place":"Berlin","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2024-11-LAF"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[7.3112534,51.5471089]},"properties":{"name":"Chancenwerk e.V.","project":"Automatisiertes Monitoring der Zielgruppenentwicklung im Zeitverlauf","lon":7.3112534,"lat":51.5471089,"address":"Am Markt 18, 44575 Castrop-Rauxel, Germany","place":"Castrop-Rauxel","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2024-09-CHW"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[9.8301035,52.3829199]},"properties":{"name":"Politik zum Anfassen e.V.","project":"Open Data aus Bürger- und Jugendbeteiligungsprojekten","lon":9.8301035,"lat":52.3829199,"address":"Grenzstraße 5a, 30627 Hannover, Germany","place":"Hannover","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2024-03-PZA"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[10.0460532,53.5915891]},"properties":{"name":"Leerstandsmelder; Gängeviertel e.V.","project":"Back- und Frontend, Contententwicklung, UX-Testing und rechtliche Prüfung mit Umsetzung der entsprechenden Änderungen des Webseiten-Relaunchs von Leerstandsmelder.de","lon":10.0460532,"lat":53.5915891,"address":"Valentinskamp 28a, 20355 Hamburg, Germany","place":"Hamburg","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2024-03-LEM"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[10.0460532,53.5915891]},"properties":{"name":"Babylotse","project":"Automatisierte Fragebogenauswertung mit Generativer KI","lon":10.0460532,"lat":53.5915891,"address":"Liliencronstraße 130, 22149 Hamburg, Germany","place":"Hamburg","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2024-06-BAB"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[7.6740466,51.2942083]},"properties":{"name":"Demokratie-Wegweiser","project":"Mit Daten zu transparenterer Demokratie","lon":7.6740466,"lat":51.2942083,"address":"Fritz-Thomée-Straße 8, 58762 Altena, Germany","place":"Altena","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2023-12-DEM"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[2.3568079,48.8541478]},"properties":{"name":"City of Paris ","project":"Wo sollen neue Fahrradparkplätze in Paris entstehen? Unterstützung der Entscheidungsfindung mit offenen Daten","lon":2.3568079,"lat":48.8541478,"address":"Place de l'Hôtel de Ville , 75004 Paris, France","place":"Paris","country":"France","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2022-07-COP"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[13.4151637,52.5259212]},"properties":{"name":"a tip: tap e.V.","project":"Qualitätsanalyse von OpenStreetMap Daten für Trinkbrunnen","lon":13.4151637,"lat":52.5259212,"address":"Oberlandstraße 26-35, 12099 Berlin, Germany","place":"Berlin","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2022-11-ATT"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[7.8565641,48.0042484]},"properties":{"name":"Deutscher Caritasverband e.V., Referat Soziale Lebenslagen und Solidarität","project":"Alleinerziehend und arbeitslos: Analyse von Daten der Allgemeinen Sozialberatung der Caritas","lon":7.8565641,"lat":48.0042484,"address":"Karlstraße 40, 79104 Freiburg, Germany","place":"Freiburg","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2021-10-CAR"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[13.4151637,52.5259212]},"properties":{"name":"Silbernetz e.V.","project":"Zeitersparnisse und verbesserte Wirkungskommunikation dank Automatisierung und Datenvisualisierungen","lon":13.4151637,"lat":52.5259212,"address":"Wollankstraße 97, 13359 Berlin, Germany","place":"Berlin","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2021-07-SIL"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[13.4151637,52.5259212]},"properties":{"name":"Science on Stage e.V.","project":"Wertvolle Zeit sparen und Fehler vermeiden durch die Automatisierung von Prozessen","lon":13.4151637,"lat":52.5259212,"address":"Am Borsigturm 15, 13507 Berlin, Germany","place":"Berlin","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2021-04-SOS"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-0.0096771,5.6596409]},"properties":{"name":"Hacklab Foundation","project":"Erstellung eines interaktiven Survey-Reports für die Hacklab Foundation, Ghana","lon":-0.0096771,"lat":5.6596409,"address":"PLOT A/172 , 00233 Tema, Greater Accra Region, Ghana","place":"Tema, Greater Accra Region","country":"Ghana","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2021-03-HAC"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[13.4151637,52.5259212]},"properties":{"name":"Citizens for Europe","project":"Diversität erforschen - Visualisierung der Afrozensus Umfrage in R","lon":13.4151637,"lat":52.5259212,"address":"Chausseestraße 86, 10115 Berlin, Germany","place":"Berlin","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2021-02-CFE"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[13.4151637,52.5259212]},"properties":{"name":"European Youth Parliament","project":"Anschauliche Aufbereitung von Umfragen zur Teilnehmerstruktur und dem Impact von Veranstaltungen","lon":13.4151637,"lat":52.5259212,"address":"Sophienstraße 28-29, 10178 Berlin, Germany","place":"Berlin","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2020-05-EYP"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[11.9256144,53.5802882]},"properties":{"name":"Denk-mal-Kultur e.V.","project":"Wer ist interessiert an einem guten Leben im ländlichen Raum?","lon":11.9256144,"lat":53.5802882,"address":"Marx-Engels-Platz 5, 19374 Mestlin, Germany","place":"Mestlin","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2020-03-DEN"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[8.2767467,46.9414282]},"properties":{"name":"OdA Umwelt","project":"Weiterbildungen im nachhaltigen Sektor fördern","lon":8.2767467,"lat":46.9414282,"address":"Eichistrasse 1, 6055 Alpnach Dorf, Switzerland","place":"Alpnach Dorf","country":"Switzerland","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2019-11-ODA"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[13.4151637,52.5259212]},"properties":{"name":"Minor Kontor","project":"tf-idf zu Babel: Text Mining zur Optimierung von automatisierten Prozessen in multilingualen Kontexten","lon":13.4151637,"lat":52.5259212,"address":"Alt-Reinickendorf 25, 13407 Berlin, Germany","place":"Berlin","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2019-02-MIN"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[8.2705379,49.9987975]},"properties":{"name":"Weltladen Dachverband","project":"Automatisierte Reportgenerierung zur Verbesserung der Arbeit der Weltläden","lon":8.2705379,"lat":49.9987975,"address":"Ludwigsstraße 11, 55116 Mainz, Germany","place":"Mainz","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2019-06-WEL"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[8.5151521,49.5034285]},"properties":{"name":"Turnverein 1880 Käfertal","project":"Mitgliederbefragung des Turnvereins Käfertal","lon":8.5151521,"lat":49.5034285,"address":"Wachenheimer Straße 75, 68309 Mannheim, Germany","place":"Mannheim","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2018-11-TVK"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[10.0460532,53.5915891]},"properties":{"name":"Pfadfinder*innenbund Nord","project":"Analyse einer Mitgliederbefragung des Pfadfinderbunds Nord","lon":10.0460532,"lat":53.5915891,"address":"Alsterdorfer Straße 575, 22335 Hamburg, Germany","place":"Hamburg","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2015-08-PBN"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[9.4140909,51.3015994]},"properties":{"name":"CVJM-Gesamtverband in Deutschland e. V.","project":"Output Monitoring durch Entwicklung und Implementierung eines Fragebogen mithilfe von Fokusgruppen","lon":9.4140909,"lat":51.3015994,"address":"Im Druseltal 8, 34131 Kassel, Germany","place":"Kassel","country":"Germany","url":"https://correlaid.org/daten-nutzen/projektdatenbank/2024-04-TEN"}}]};
+
+    const features = geojson.features;
+
+    function addMarker(feature) {
+      const props = feature.properties;
+
+      const popupHTML = `
+        <div class="popup">
+          <h3>${props.name}</h3>
+          ${props.project ? `<div class="project-title">${props.project}</div>` : ''}
+          ${props.address ? `<div class="address">${props.address}</div>` : ''}
+          ${props.url ? `<a href="${props.url}" target="_blank" rel="noopener">Zum Projekt</a>` : ''}
+        </div>
+      `;
+
+      // Use default MapLibre marker (pin icon) in CorrelAid pink
+      new maplibregl.Marker({ color: '#9B2873' })
+        .setLngLat(feature.geometry.coordinates)
+        .setPopup(new maplibregl.Popup({ offset: 25 }).setHTML(popupHTML))
+        .addTo(map);
+    }
+
+    map.on('load', () => {
+      features.forEach(addMarker);
+    });
+
+    // --- 4) VIEW TOGGLE FUNCTIONALITY ---------------------------------------
+    let isGlobalView = false;
+    const europeView = { center: [10.5, 51.2], zoom: 4 };
+
+    function getGlobalBounds() {
+      const first = features[0].geometry.coordinates;
+      const bounds = new maplibregl.LngLatBounds(first, first);
+      features.forEach(f => bounds.extend(f.geometry.coordinates));
+      return bounds;
+    }
+
+    const viewToggleBtn = document.getElementById('viewToggle');
+
+    viewToggleBtn.addEventListener('click', () => {
+      if (isGlobalView) {
+        // Switch to Europe view
+        map.flyTo({
+          center: europeView.center,
+          zoom: europeView.zoom,
+          duration: 1500,
+          essential: true
+        });
+        viewToggleBtn.classList.remove('flipped');
+        viewToggleBtn.setAttribute('aria-label', 'View all locations');
+        isGlobalView = false;
+      } else {
+        // Switch to Global view
+        map.fitBounds(getGlobalBounds(), {
+          padding: { top: 100, bottom: 50, left: 50, right: 50 },
+          duration: 1500,
+          essential: true
+        });
+        viewToggleBtn.classList.add('flipped');
+        viewToggleBtn.setAttribute('aria-label', 'Return to Europe view');
+        isGlobalView = true;
+      }
+    });
+
+  </script>
+</body>
+</html>

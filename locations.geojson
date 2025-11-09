@@ -1,0 +1,525 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.4151637,
+          52.5259212
+        ]
+      },
+      "properties": {
+        "name": "European Community Foundation Initiative",
+        "project": "Database management system for European Community Foundations Initiative (ECFI)",
+        "lon": 13.4151637,
+        "lat": 52.5259212,
+        "address": "Karl-Liebknecht-Straße 34, 10178 Berlin, Germany",
+        "place": "Berlin",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2025-10-ECF"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.4151637,
+          52.5259212
+        ]
+      },
+      "properties": {
+        "name": "Silbernetz e.V.",
+        "project": "Improving and upgrading the Silbernetz dashboard",
+        "lon": 13.4151637,
+        "lat": 52.5259212,
+        "address": "Wollankstraße 97, 13359 Berlin, Germany",
+        "place": "Berlin",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2025-05-SIL"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.0460532,
+          53.5915891
+        ]
+      },
+      "properties": {
+        "name": "Phase BE",
+        "project": " Fortschritts-Monitor",
+        "lon": 10.0460532,
+        "lat": 53.5915891,
+        "address": "Hellbrookstraße 63, 22305 Hamburg, Germany",
+        "place": "Hamburg",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2025-05-PBE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1723689,
+          47.6628479
+        ]
+      },
+      "properties": {
+        "name": "Smart Green City Konstanz",
+        "project": "Data Story mit Konstanzer Klima- und Wetterdaten",
+        "lon": 9.1723689,
+        "lat": 47.6628479,
+        "address": "Untere Laube 24, 78462 Konstanz, Germany",
+        "place": "Konstanz",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2025-01-SGC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.3314064,
+          48.1863764
+        ]
+      },
+      "properties": {
+        "name": "Sindbad",
+        "project": "Automatisiertes Qualitätsmanagement für ein Mentoringprogramm",
+        "lon": 16.3314064,
+        "lat": 48.1863764,
+        "address": "Sparkassaplatz 3, 1150 Wien, Austria",
+        "place": "Wien",
+        "country": "Austria",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2024-12-SIN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.4151637,
+          52.5259212
+        ]
+      },
+      "properties": {
+        "name": "Civic Data Lab",
+        "project": "Auswertung einer Umfrage zu KI im Ehrenamt",
+        "lon": 13.4151637,
+        "lat": 52.5259212,
+        "address": "Glinkastraße 24, 10117 Berlin, Germany",
+        "place": "Berlin",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2024-11-LAF"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.3112534,
+          51.5471089
+        ]
+      },
+      "properties": {
+        "name": "Chancenwerk e.V.",
+        "project": "Automatisiertes Monitoring der Zielgruppenentwicklung im Zeitverlauf",
+        "lon": 7.3112534,
+        "lat": 51.5471089,
+        "address": "Am Markt 18, 44575 Castrop-Rauxel, Germany",
+        "place": "Castrop-Rauxel",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2024-09-CHW"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.8301035,
+          52.3829199
+        ]
+      },
+      "properties": {
+        "name": "Politik zum Anfassen e.V.",
+        "project": "Open Data aus Bürger- und Jugendbeteiligungsprojekten",
+        "lon": 9.8301035,
+        "lat": 52.3829199,
+        "address": "Grenzstraße 5a, 30627 Hannover, Germany",
+        "place": "Hannover",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2024-03-PZA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.0460532,
+          53.5915891
+        ]
+      },
+      "properties": {
+        "name": "Leerstandsmelder; Gängeviertel e.V.",
+        "project": "Back- und Frontend, Contententwicklung, UX-Testing und rechtliche Prüfung mit Umsetzung der entsprechenden Änderungen des Webseiten-Relaunchs von Leerstandsmelder.de",
+        "lon": 10.0460532,
+        "lat": 53.5915891,
+        "address": "Valentinskamp 28a, 20355 Hamburg, Germany",
+        "place": "Hamburg",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2024-03-LEM"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.0460532,
+          53.5915891
+        ]
+      },
+      "properties": {
+        "name": "Babylotse",
+        "project": "Automatisierte Fragebogenauswertung mit Generativer KI",
+        "lon": 10.0460532,
+        "lat": 53.5915891,
+        "address": "Liliencronstraße 130, 22149 Hamburg, Germany",
+        "place": "Hamburg",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2024-06-BAB"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.6740466,
+          51.2942083
+        ]
+      },
+      "properties": {
+        "name": "Demokratie-Wegweiser",
+        "project": "Mit Daten zu transparenterer Demokratie",
+        "lon": 7.6740466,
+        "lat": 51.2942083,
+        "address": "Fritz-Thomée-Straße 8, 58762 Altena, Germany",
+        "place": "Altena",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2023-12-DEM"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3568079,
+          48.8541478
+        ]
+      },
+      "properties": {
+        "name": "City of Paris ",
+        "project": "Wo sollen neue Fahrradparkplätze in Paris entstehen? Unterstützung der Entscheidungsfindung mit offenen Daten",
+        "lon": 2.3568079,
+        "lat": 48.8541478,
+        "address": "Place de l'Hôtel de Ville , 75004 Paris, France",
+        "place": "Paris",
+        "country": "France",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2022-07-COP"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.4151637,
+          52.5259212
+        ]
+      },
+      "properties": {
+        "name": "a tip: tap e.V.",
+        "project": "Qualitätsanalyse von OpenStreetMap Daten für Trinkbrunnen",
+        "lon": 13.4151637,
+        "lat": 52.5259212,
+        "address": "Oberlandstraße 26-35, 12099 Berlin, Germany",
+        "place": "Berlin",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2022-11-ATT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.8565641,
+          48.0042484
+        ]
+      },
+      "properties": {
+        "name": "Deutscher Caritasverband e.V., Referat Soziale Lebenslagen und Solidarität",
+        "project": "Alleinerziehend und arbeitslos: Analyse von Daten der Allgemeinen Sozialberatung der Caritas",
+        "lon": 7.8565641,
+        "lat": 48.0042484,
+        "address": "Karlstraße 40, 79104 Freiburg, Germany",
+        "place": "Freiburg",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2021-10-CAR"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.4151637,
+          52.5259212
+        ]
+      },
+      "properties": {
+        "name": "Silbernetz e.V.",
+        "project": "Zeitersparnisse und verbesserte Wirkungskommunikation dank Automatisierung und Datenvisualisierungen",
+        "lon": 13.4151637,
+        "lat": 52.5259212,
+        "address": "Wollankstraße 97, 13359 Berlin, Germany",
+        "place": "Berlin",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2021-07-SIL"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.4151637,
+          52.5259212
+        ]
+      },
+      "properties": {
+        "name": "Science on Stage e.V.",
+        "project": "Wertvolle Zeit sparen und Fehler vermeiden durch die Automatisierung von Prozessen",
+        "lon": 13.4151637,
+        "lat": 52.5259212,
+        "address": "Am Borsigturm 15, 13507 Berlin, Germany",
+        "place": "Berlin",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2021-04-SOS"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.0096771,
+          5.6596409
+        ]
+      },
+      "properties": {
+        "name": "Hacklab Foundation",
+        "project": "Erstellung eines interaktiven Survey-Reports für die Hacklab Foundation, Ghana",
+        "lon": -0.0096771,
+        "lat": 5.6596409,
+        "address": "PLOT A/172 , 00233 Tema, Greater Accra Region, Ghana",
+        "place": "Tema, Greater Accra Region",
+        "country": "Ghana",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2021-03-HAC"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.4151637,
+          52.5259212
+        ]
+      },
+      "properties": {
+        "name": "Citizens for Europe",
+        "project": "Diversität erforschen - Visualisierung der Afrozensus Umfrage in R",
+        "lon": 13.4151637,
+        "lat": 52.5259212,
+        "address": "Chausseestraße 86, 10115 Berlin, Germany",
+        "place": "Berlin",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2021-02-CFE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.4151637,
+          52.5259212
+        ]
+      },
+      "properties": {
+        "name": "European Youth Parliament",
+        "project": "Anschauliche Aufbereitung von Umfragen zur Teilnehmerstruktur und dem Impact von Veranstaltungen",
+        "lon": 13.4151637,
+        "lat": 52.5259212,
+        "address": "Sophienstraße 28-29, 10178 Berlin, Germany",
+        "place": "Berlin",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2020-05-EYP"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.9256144,
+          53.5802882
+        ]
+      },
+      "properties": {
+        "name": "Denk-mal-Kultur e.V.",
+        "project": "Wer ist interessiert an einem guten Leben im ländlichen Raum?",
+        "lon": 11.9256144,
+        "lat": 53.5802882,
+        "address": "Marx-Engels-Platz 5, 19374 Mestlin, Germany",
+        "place": "Mestlin",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2020-03-DEN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.2767467,
+          46.9414282
+        ]
+      },
+      "properties": {
+        "name": "OdA Umwelt",
+        "project": "Weiterbildungen im nachhaltigen Sektor fördern",
+        "lon": 8.2767467,
+        "lat": 46.9414282,
+        "address": "Eichistrasse 1, 6055 Alpnach Dorf, Switzerland",
+        "place": "Alpnach Dorf",
+        "country": "Switzerland",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2019-11-ODA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.4151637,
+          52.5259212
+        ]
+      },
+      "properties": {
+        "name": "Minor Kontor",
+        "project": "tf-idf zu Babel: Text Mining zur Optimierung von automatisierten Prozessen in multilingualen Kontexten",
+        "lon": 13.4151637,
+        "lat": 52.5259212,
+        "address": "Alt-Reinickendorf 25, 13407 Berlin, Germany",
+        "place": "Berlin",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2019-02-MIN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.2705379,
+          49.9987975
+        ]
+      },
+      "properties": {
+        "name": "Weltladen Dachverband",
+        "project": "Automatisierte Reportgenerierung zur Verbesserung der Arbeit der Weltläden",
+        "lon": 8.2705379,
+        "lat": 49.9987975,
+        "address": "Ludwigsstraße 11, 55116 Mainz, Germany",
+        "place": "Mainz",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2019-06-WEL"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5151521,
+          49.5034285
+        ]
+      },
+      "properties": {
+        "name": "Turnverein 1880 Käfertal",
+        "project": "Mitgliederbefragung des Turnvereins Käfertal",
+        "lon": 8.5151521,
+        "lat": 49.5034285,
+        "address": "Wachenheimer Straße 75, 68309 Mannheim, Germany",
+        "place": "Mannheim",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2018-11-TVK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.0460532,
+          53.5915891
+        ]
+      },
+      "properties": {
+        "name": "Pfadfinder*innenbund Nord",
+        "project": "Analyse einer Mitgliederbefragung des Pfadfinderbunds Nord",
+        "lon": 10.0460532,
+        "lat": 53.5915891,
+        "address": "Alsterdorfer Straße 575, 22335 Hamburg, Germany",
+        "place": "Hamburg",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2015-08-PBN"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.4140909,
+          51.3015994
+        ]
+      },
+      "properties": {
+        "name": "CVJM-Gesamtverband in Deutschland e. V.",
+        "project": "Output Monitoring durch Entwicklung und Implementierung eines Fragebogen mithilfe von Fokusgruppen",
+        "lon": 9.4140909,
+        "lat": 51.3015994,
+        "address": "Im Druseltal 8, 34131 Kassel, Germany",
+        "place": "Kassel",
+        "country": "Germany",
+        "url": "https://correlaid.org/daten-nutzen/projektdatenbank/2024-04-TEN"
+      }
+    }
+  ]
+}
