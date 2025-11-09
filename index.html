@@ -80,8 +80,8 @@
     /* Style default MapLibre markers */
     .maplibregl-marker svg {
       fill: #9B2873; /* CorrelAid pink */
-      width: 35px !important;
-      height: 35px !important;
+      width: 45px !important;
+      height: 45px !important;
     }
     .maplibregl-marker {
       cursor: pointer;
@@ -202,7 +202,7 @@
       container: 'map',
       style: STYLE_URL,
       center: [10.5, 51.2],   // Center on Germany
-      zoom: 5
+      zoom: 4
     });
 
     map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'top-right');
@@ -240,7 +240,7 @@
 
     // --- 4) VIEW TOGGLE FUNCTIONALITY ---------------------------------------
     let isGlobalView = false;
-    const europeView = { center: [10.5, 51.2], zoom: 5 };
+    const europeView = { center: [10.5, 51.2], zoom: 4 };
 
     function getGlobalBounds() {
       const first = features[0].geometry.coordinates;
